@@ -28,6 +28,7 @@ body .cube-container {
   height: 1em;
   border-radius: 50%;
   background-color: lightblue;
+  transform-style: preserve-3d;
   position: absolute;
   left: -0.5em;
   bottom: 1em;
@@ -36,10 +37,29 @@ body .cube-container {
 .cube {
   width: 2em;
   height: 2em;
-  background-color: #0ff7;
   position: absolute;
   top: -1em;
   left: -1em;
+  transform-style: preserve-3d;
+}
+.cube .left, .cube .right, .cube .front, .cube .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #0ff7;
+  transform-style: preserve-3d;
+}
+.cube .front {
+  transform: translateZ(1em);
+}
+.cube .right {
+  transform: rotateY(90deg) translateZ(1em);
+}
+.cube .back {
+  transform: rotateY(180deg) translateZ(1em);
+}
+.cube .left {
+  transform: rotateY(270deg) translateZ(1em);
 }
 
 .floor {
