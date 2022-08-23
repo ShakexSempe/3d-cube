@@ -32,6 +32,14 @@ body .cube-container {
   position: absolute;
   left: -0.5em;
   bottom: 1em;
+  background-image: radial-gradient(circle at top, skyblue, 50%, #000);
+}
+
+.ballShadow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#0007, #0000 50%);
 }
 
 .cube {
@@ -42,12 +50,16 @@ body .cube-container {
   left: -1em;
   transform-style: preserve-3d;
 }
-.cube .left, .cube .right, .cube .front, .cube .back {
+.cube .left,
+.cube .right,
+.cube .front,
+.cube .back {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: #0ff7;
   transform-style: preserve-3d;
+  box-shadow: inset 0 0 0.5em #000a;
 }
 .cube .front {
   transform: translateZ(1em);
@@ -61,6 +73,24 @@ body .cube-container {
 .cube .left {
   transform: rotateY(270deg) translateZ(1em);
 }
+.cube .top {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  background-color: #0ff7;
+  transform: translateY(-50%) rotateX(90deg);
+  box-shadow: inset 0 0 0.5em #000a;
+}
+.cube .bottom {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  bottom: 0;
+  background-color: #0ff7;
+  background-color: #0007;
+  transform: translateY(50%) rotateX(90deg);
+  box-shadow: 0 0 0.5em #000;
+}
 
 .floor {
   position: absolute;
@@ -68,8 +98,8 @@ body .cube-container {
   transform: translate(-50%, -50%) rotateX(90deg);
   width: 15em;
   height: 15em;
-  background-image: repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
-  background-size: 1em 1em;
+  background-image: radial-gradient(#0000, #000 75%), repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+  background-size: 100%, 1em 1em;
 }
 
 /*# sourceMappingURL=style.css.map */

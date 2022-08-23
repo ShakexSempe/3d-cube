@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 // VARIABLES
 $box-color: #0ff7;
-$conic-bg: repeating-conic-gradient(
-    from 45deg, #111 0deg 90deg,
-        #222 90deg 180deg);
+$conic-bg: repeating-conic-gradient(from 45deg, #111 0deg 90deg,
+    #222 90deg 180deg);
 
 body {
-    
+
     .cube-container {
         background-color: #000;
         min-height: 100vh;
@@ -25,11 +25,13 @@ body {
         perspective-origin: 50% calc(50% - 2em);
     }
 }
+
 // SCENE 
 .scene {
     position: relative;
     transform-style: preserve-3d;
 }
+
 // BALL
 .ball {
     width: 1em;
@@ -40,7 +42,18 @@ body {
     position: absolute;
     left: -.5em;
     bottom: 1em;
+    background-image: radial-gradient(circle at top, skyblue, 50%,#000);
 }
+
+// BALL SHADOW
+.ballShadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    // background-color: yellow;
+    background-image: radial-gradient(#0007, #0000 50%);
+}
+
 // CUBE 
 .cube {
     width: 2em;
@@ -49,41 +62,67 @@ body {
     top: -1em;
     left: -1em;
     transform-style: preserve-3d;
-    
-    .left, .right, .front, .back {
+
+    .left,
+    .right,
+    .front,
+    .back {
         position: absolute;
         width: 100%;
         height: 100%;
         background-color: $box-color;
         transform-style: preserve-3d;
+        box-shadow: inset 0 0 0.5em #000a;
 
     }
 
     .front {
         transform: translateZ(1em);
     }
+
     .right {
         transform: rotateY(90deg) translateZ(1em);
     }
+
     .back {
-        transform: rotateY(180deg) translateZ(1em) ;
-    }
-    .left {
-        transform: rotateY(270deg) translateZ(1em) ;
+        transform: rotateY(180deg) translateZ(1em);
     }
 
+    .left {
+        transform: rotateY(270deg) translateZ(1em);
+    }
+
+    .top {
+        position: absolute;
+        width: 2em;
+        height: 2em;
+        background-color: $box-color;
+        transform: translateY(-50%) rotateX(90deg);
+        box-shadow: inset 0 0 0.5em #000a;
+    }
+    .bottom {
+        position: absolute;
+        width: 2em;
+        height: 2em;
+        bottom: 0;
+        background-color: $box-color;
+        background-color: #0007;
+        transform: translateY(50%) rotateX(90deg);
+        box-shadow:  0 0 0.5em #000;
+    }
 }
+
 // FLOOR
 .floor {
     position: absolute;
     // top to position center of the floor with bottom of the cube 
     top: 1em;
     // floor rotated 90deg = not visible before perspective is added
-    transform: translate(-50%, -50%)
-                rotateX(90deg);
+    transform: translate(-50%, -50%) rotateX(90deg);
     width: 15em;
     height: 15em;
-    background-image: $conic-bg;
-    background-size: 1em 1em;
+    background-image: radial-gradient(#0000, #000 75% ),
+                        $conic-bg;
+    background-size: 100%, 1em 1em;
 
 }
